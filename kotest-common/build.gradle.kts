@@ -33,6 +33,12 @@ kotlin {
       linuxX64()
       mingwX64()
       macosX64()
+      val buildForDevice = project.findProperty("kotlin.native.cocoapods.target") == "ios_arm"
+      if (buildForDevice) {
+          iosArm64("ios")
+      } else {
+          iosX64("ios")
+      }
    }
 
    targets.all {

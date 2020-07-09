@@ -26,6 +26,15 @@ kotlin {
             }
          }
       }
+      linuxX64()
+      mingwX64()
+      macosX64()
+      val buildForDevice = project.findProperty("kotlin.native.cocoapods.target") == "ios_arm"
+      if (buildForDevice) {
+          iosArm64("ios")
+      } else {
+          iosX64("ios")
+      }
    }
 
    targets.all {
@@ -51,7 +60,6 @@ kotlin {
          dependsOn(commonMain)
          dependencies {
             implementation(kotlin("stdlib-jdk8"))
-            implementation(Libs.Konform.KonformJvm)
          }
       }
 
@@ -59,7 +67,6 @@ kotlin {
          dependsOn(commonMain)
          dependencies {
             implementation(kotlin("stdlib-js"))
-            implementation(Libs.Konform.KonformJs)
          }
       }
 
