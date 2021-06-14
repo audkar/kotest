@@ -34,7 +34,7 @@ kotlin {
             implementation(project(Projects.Api))
             implementation(project(Projects.Engine))
             implementation(project(Projects.Common))
-            implementation("commons-io:commons-io:2.6")
+            implementation("commons-io:commons-io:2.10.0")
             implementation(Libs.Mocking.mockk)
          }
       }
